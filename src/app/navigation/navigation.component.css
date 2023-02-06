@@ -1,0 +1,17 @@
+.display-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-top: 2em; */
+  /* max-width: 500px; */
+  /* margin-top: 3em;
+  margin-left: 6em; */
+}
+
+.welcome {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.welcome:hover {
+  color: rgb(63, 145, 223);
+}

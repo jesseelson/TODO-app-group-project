@@ -1,0 +1,73 @@
+<div
+  class="container-fluid bg-light"
+  style="position: relative; top: 2.5em"
+>
+  <div class="container bg-light">
+    <div class="row mt-4">
+      <div class="col-md-9 mx-auto bg-white shadow pb-3">
+        <div class="sticky-header">
+          <div class="card bg-info mt-4">
+            <h4 class="text-white p-3 pt-2 pb-2">To Do Tracker</h4>
+          </div>
+
+          <!-- <div class="container"> -->
+          <div class="">
+            <form #newTodoForm="ngForm" (ngSubmit)="addTodo(newTodoForm)">
+              <div class="input-group p-4">
+                <input
+                  ngModel
+                  #todoTextField="ngModel"
+                  required
+                  minlength="2"
+                  name="text"
+                  type="text"
+                  class="form-control input text-secondary"
+                  placeholder="Enter todo "
+                />
+                <input
+                  ngModel
+                  #todoTextField="ngModel"
+                  required
+                  minlength="2"
+                  name="details"
+                  type="details"
+                  class="form-control input text-secondary"
+                  placeholder="Details "
+                />
+                <input
+                  ngModel
+                  #todoTextField="ngModel"
+                  optional
+                  minlength="8"
+                  name="duedate"
+                  type="date"
+                  class="form-control input text-secondary"
+                  placeholder="Due Date"
+                />
+                <button
+                  class="btn btn-outline-success"
+                  type="submit"
+                  [disabled]="!newTodoForm.valid"
+                >
+                  New Task
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="container">
+            <h4 class="text-primary mt-4">Todos :</h4>
+
+            <app-todo-item
+              *ngFor="let todo of todoArr; let i = index"
+              [todo]="todo"
+              [todoIndex]="i"
+              (todoClicked)="isCompleted(todo)"
+              (editClicked)="onEditTodo()"
+              (deleteClicked)="deleteTodo(todo)"
+            ></app-todo-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

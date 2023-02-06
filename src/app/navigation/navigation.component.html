@@ -1,0 +1,127 @@
+<nav
+  class="navbar fixed-top navbar-light navbar-expand-md bg-info mx-auto justify-content-between"
+>
+  <div class="container-fluid">
+    <!-- TITLE -->
+    <a
+      class="navbar-brand brand text-white pt-2 pb-2 ml-5"
+      id="brand"
+      routerLink="/dashboard"
+      >To Do App
+    </a>
+
+    <!-- HAMBURGER -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarToggler"
+      aria-label="Toggle navigation"
+      aria-controls="navbarToggler"
+      aria-expanded="false"
+      (click)="collapsed = !collapsed"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- NAV ITEMS  -->
+
+    <div
+      class="collapse navbar-collapse justify-content-center"
+      id="navbarToggler"
+      [class.collapse]="collapsed"
+      (window:resize)="collapsed = true"
+    >
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link text-white p-3 pt-2 pb-2"
+            routerLink="/dashboard"
+            routerLinkActive="active"
+            ><h5>Todo List</h5></a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white p-3 pt-2 pb-2"
+            routerLink="/calendar"
+            routerLinkActive="active"
+            ><h5>Calendar</h5></a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white p-3 pt-2 pb-2"
+            routerLink="/archive"
+            routerLinkActive="active"
+            ><h5>Archived Todos</h5></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarToggler"
+      [class.collapse]="collapsed"
+      (window:resize)="collapsed = true"
+    >
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a
+            class="nav-link text-white p-3 pt-2 pb-2"
+            routerLink="/auth"
+            routerLinkActive="active"
+            ><h5>Sign In/Sign Up</h5></a
+          >
+        </li>
+
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a
+            class="nav-link text-white p-3 pt-2 pb-2"
+            routerLink="/auth"
+            routerLinkActive="active"
+            ><h5>Logout</h5></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--
+<div class="container  display-1">
+      <div class="welcome">
+
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      </div>
+            <div>  |  </div>
+      <div class="welcome">
+
+            <a class="nav-link" routerLink="/calendar" routerLinkActive="active">Calendar</a>
+        </div>
+
+
+  </div> -->
+
+<!-- <div
+    class="collapse navbar-collapse"
+    id="navbarToggler"
+    [class.collapse]="collapsed"
+    (window:resize)="collapsed = true"
+  >
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/calendar" routerLinkActive="active">Calendar</a>
+      </li>
+    </ul>
+
+
+  </div> -->

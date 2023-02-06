@@ -1,0 +1,57 @@
+h1 {
+  text-align: center;
+  padding-top: .5em;
+}
+
+h2 {
+  text-align: center;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  max-width: 100%;
+  row-gap: 0em;
+  padding-bottom: 5em;
+  /* padding-left: 3em; */
+  text-align: top;
+}
+
+.weeklabel {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.day {
+  box-sizing: border-box;
+  width: 100%;
+  height: 6em;
+  /* background: rgba(241, 241, 237, 0.4); */
+  border: .1em dashed rgba(143, 182, 234, 0.5);
+}
+
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    background-color: white;
+  }
+
+.outer-border {
+  border: .1em dashed rgba(143, 182, 234, 0.5);
+}
+  /* .container-fluid{
+    z-index: 1;
+  } */
+
+/* .calendar {
+  width: 210px;
+  border: 5em;
+
+}
+
+.day {
+    width: 30px;
+    display: inline-block;
+    border: 5em;
+  } */

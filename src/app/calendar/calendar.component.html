@@ -1,0 +1,53 @@
+<div class="container-fluid bg-light" style="position: relative; top: 2.5em">
+  <div class="container bg-light">
+    <div class="row mt-4">
+      <div class="col-md-9 mx-auto bg-white shadow pb-3">
+        <div class="sticky-header">
+          <div class="card bg-info mt-4">
+            <h4 class="text-white p-3 pt-2 pb-2">Calendar</h4>
+          </div>
+          <div
+            class="container-sm bg-white"
+          >
+            <h1 class="card-header  text-primary" id="month">
+              {{ createCalendar.getMonthName(monthNumber) }}
+            </h1>
+            <h2 class="card-header  text-primary" id="year">{{ year }}</h2>
+
+            <br />
+            <div class="form-inline">
+
+              <button
+                class="btn btn-outline-primary col-sm-6"
+                id="previous"
+                (click)="onPreviousMonth()"
+              >
+                Previous
+              </button>
+
+              <button
+                class="btn btn-outline-primary col-sm-6"
+                id="next"
+                (click)="onNextMonth()"
+              >
+                Next
+              </button>
+            </div>
+            <br />
+            <div class="container">
+              <div class="calendar">
+                <span *ngFor="let weekDay of weekDaysName" class="weeklabel  text-white bg-info ps-1 rounded">
+                  {{ weekDay }}
+                </span>
+
+                <span *ngFor="let day of monthDays" class="day text-primary rounded">
+                  {{ day.number }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

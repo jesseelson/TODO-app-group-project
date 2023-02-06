@@ -1,0 +1,165 @@
+<div
+  *ngIf="!todo.isArchived"
+  [ngClass]="todo.isCompleted ? 'complete' : 'incomplete'"
+  class="p-2 shadow card mt-3"
+>
+  <!-- Displays text -->
+
+  <details>
+    <summary class="text-primary">
+      {{ todo.text }}
+    </summary>
+    <div class="row container">
+      <span class="card border-0 text-info col">
+        {{ todo.details }}
+      </span>
+      <span
+        *ngIf="todo.duedate!; null"
+        class="card border-0 text-secondary col text-end"
+      >
+        Complete by {{ todo.duedate }}!
+      </span>
+    </div>
+  </details>
+
+  <div class="todo-controls-box" (click)="$event.stopPropagation()">
+    <div class="todo-control-button" appToolTip="Edit Todo">
+      <button
+        class="btn btn-outline-success btn-sm col-me-2 float-start"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#todoItemModal_{{ todoIndex }}"
+        appToolTip="Archive Todo"
+        (click)="onComplete(todo)"
+      >
+        Complete
+      </button>
+      <!-- <div class="container">
+        <input
+          type="checkbox"
+          (click)="onComplete(todo)"
+          id="input-2"
+          class="check-input"
+        />
+        <label for="input-2" class="checkbox">
+          <svg viewBox="0 0 22 16" fill="none">
+            <path d="M1 6.85L8.09677 14L21 1" />
+          </svg>
+        </label>
+      </div> -->
+
+      <button
+        class="btn btn-outline-danger btn-sm col-me-2 float-end"
+        type="button"
+        data-bs-target="#todoItemModal_{{ todoIndex }}"
+        appToolTip="Delete Todo"
+        (click)="onDelete(todo)"
+      >
+        Delete
+      </button>
+    </div>
+    <button
+      class="btn btn-outline-success btn-sm col-me-2 float-end"
+      type="button"
+      data-bs-target="#todoItemModal_{{ todoIndex }}"
+      appToolTip="Archive Todo"
+      (click)="onArchive(todo)"
+    >
+      Archive
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm col-me-2 float-end"
+      data-toggle="modal"
+      data-target="#todoItemModal_{{ todoIndex }}"
+      appToolTip="Edit Todo"
+      data-bs-toggle="modal"
+      attr.data-bs-target="#todoItemModal_{{ todoIndex }}"
+    >
+      Edit
+    </button>
+  </div>
+
+  <!-- Modal -->
+
+  <div
+    class="modal fade"
+    id="todoItemModal_{{ todoIndex }}"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="todoItemModal_{{ todoIndex }}Label"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="todoItemModal_{{ todoIndex }}Label">
+
+          </h5>
+          <!-- <button
+            type="button"
+            class="btn-close"
+            data-dismiss="modal"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label"
+                >Edit Todo</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="recipient-name"
+                #todoTextField
+                name="text"
+                required
+                minlength="2"
+                [(ngModel)]="editedText"
+                placeholder="{{ todo.text }}"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="recipient-name"
+                #todoTextField
+                name="text"
+                required
+                minlength="2"
+                [(ngModel)]="detailsText"
+                placeholder="{{ todo.details }}"
+              />
+              <input
+                type="date"
+                class="form-control"
+                #todoTextField
+                name="duedate"
+                optional
+                minlength="8"
+                [(ngModel)]="duedateField"
+                placeholder="{{ todo.duedate }}"
+              />
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onEditClicked(todoIndex)"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

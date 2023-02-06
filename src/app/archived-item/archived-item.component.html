@@ -1,0 +1,37 @@
+
+<div *ngIf="todo.isArchived"  [ngClass]="todo.isCompleted ?'complete' : 'archived' " class="p-2 shadow card mt-3">
+  <!-- Displays text -->
+
+  <details>
+    <summary class="text-primary">
+      {{ todo.text }}
+    </summary>
+    <div class="row container">
+      <span class="card border-0 text-info col">
+        {{ todo.details }}
+      </span>
+      <span
+      *ngIf="todo.duedate !null"
+      class="card border-0 text-secondary col text-end">
+        Was due on {{ todo.duedate }}.
+      </span>
+    </div>
+  </details>
+
+  <div class="todo-controls-box" (click)="$event.stopPropagation()">
+    <div class="todo-control-button" appToolTip="Edit Todo">
+      <button
+        class="btn btn-outline-danger btn-sm col-me-2 float-end"
+        type="button"
+        data-bs-target="#todoItemModal_{{ todoIndex }}"
+        appToolTip="Delete Todo"
+        (click)="onDelete(todo)"
+      >
+        Delete
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
